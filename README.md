@@ -1,4 +1,4 @@
-# CodeFor_backend
+# Backendwith_Express-Project
 
 Welcome to CodeFor_backend project! This backend project serves as the foundation for building a RESTful API with user authentication and managing profile picture features,this leverages Express.js, Prisma, and PostgreSQL.
 
@@ -16,7 +16,7 @@ Welcome to CodeFor_backend project! This backend project serves as the foundatio
 ├── routes
 │   └── api.js
 ├── validators
-│   ├── validation.js
+│   ├── validationfor_auth.js
 └── server.js
 ```
 - controllers: Handles user authentication and profile picture functionality.
