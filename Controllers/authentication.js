@@ -44,19 +44,32 @@ class Authcontroller {
       if (error instanceof errors.E_VALIDATION_ERROR) {
         //console.log(error.messages)
 
-        return res.status(400).json({msg:"galat entries h isme ✨name nhi h , ✨email nhi h, ✨password nhi h, ✨password_confirmation nhi h , sare fields hone chaiye."})
+        return res.status(400).json({msg:"Missing entries.!"})
       }
     }
   }
 
   static async login(req,res) {
   try {
+  
   const body = req.body
-
-  const validator = vine.comppile(loginSchema)
+  const validator = vine.compile(loginSchema)
   const payload = await validator.validate(body)
 
-  return res.json({payload})
+  // * email checkeing ....
+
+  const findUser = await prisma.user.findUnique({
+    where :{
+      email:payload.email,
+    }
+  })
+  if(findUser){
+    if(!bcrypt.compareSync(payload.password,findUser.password)){
+      return res.status(400).json({errors:{
+        email:"NOuser Found!"
+    }}) }
+    return res.json({MSG:"Login successfully!🎉"})
+  }
   } catch (error) {
     if (error instanceof errors.E_VALIDATION_ERROR) {
     //console.log(error.messages)
