@@ -8,6 +8,7 @@ Welcome to CodeFor_backend project! This backend project serves as the foundatio
 - Prisma: An intuitive ORM for Node.js and TypeScript, simplifying database access.
 - PostgreSQL: A reliable open-source relational database system.
 
+## Project Structure
 ``` 
 ├── controllers
 │   ├── userAuthentication.js
